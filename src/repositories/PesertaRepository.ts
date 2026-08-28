@@ -1,5 +1,5 @@
-import {Peserta} from "@apptypes/";
-import {Repository} from "@repositories/Repository";
+import {Peserta} from "types";
+import {Repository} from "repositories/Repository";
 
 export class PesertaRepository extends Repository<Peserta> {
     findBySekolah(sekolah: string): Peserta[] {

@@ -10,15 +10,17 @@
     "noImplicitReturns": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
     "paths": {
       "*": ["./src/*"],
-      "@types/*": ["./src/types/*"],
-      "@models/*": ["./src/models/*"],
-      "@services/*": ["./src/services/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@cli/*": ["./src/cli/*"],
-      "@apptypes/*": ["./src/types"]
+      "@apptypes/index": ["./src/types/index.ts"],
+      "@apputils/index": ["./src/utils/index.ts"],
+      "@appservices/index": ["./src/services/index.ts"],
+      "@apprepositories/index": ["./src/repositories/index.ts"],
+      "@appmodels/index": ["./src/models/index.ts"],
+      "@appcli/index": ["./src/cli/index.ts"],
     }
   },
   "include": ["src/**/*"],

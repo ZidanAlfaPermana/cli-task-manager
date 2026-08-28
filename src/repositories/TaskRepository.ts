@@ -3,8 +3,8 @@
 // - findByPrioritas(prioritas: Priority): Task[]
 // - search(keyword: string): Task[]
 // - muatDariArray(tasks: Task[]): void   ← untuk load dari JSON nanti
-import {Priority, Task, TaskStatus} from "@apptypes/";
-import {Repository} from "@repositories/Repository";
+import {Priority, Task, TaskStatus} from "types";
+import {Repository} from "repositories/Repository";
 
 export class TaskRepository extends Repository<Task> {
     findByStatus(status: TaskStatus): Task[] {

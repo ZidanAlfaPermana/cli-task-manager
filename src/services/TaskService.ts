@@ -1,39 +1,79 @@
-import { PesertaRepository } from "repositories";
-import {Peserta} from "types";
+// Method yang harus ada:
+// - tambahTask(judul: string, prioritas?: Priority): Task
+// - getSemuaTask(): Task[]
+// - getTaskByStatus(status: TaskStatus): Task[]
+// - ubahStatus(id: number, status: TaskStatus): Task | undefined
+// - hapusTask(id: number): boolean
+// - cariTask(keyword: string): Task[]
+// - getStats(): TaskStats
+
+import { TaskRepository } from "repositories";
+import {TaskStats, Task, Priority, TaskStatus} from "./../types";
+import {isJudulValid, isPriorityValid} from "utils";
 
 export class TaskService {
-    private pesertaRepo: PesertaRepository;
+    private taskRepo: TaskRepository;
 
-    constructor(repository: PesertaRepository) {
-        this.pesertaRepo = repository;
+    constructor(repository: TaskRepository) {
+        this.taskRepo = repository;
     }
 
-    createPeserta(nama: string, sekolah: string, fase: number, kelas: string, email: string): Peserta {
-        if (nama.trim() === "") {
-            throw new Error("Gagal: Nama tidak boleh kosong!");
+    tambahTask(judul: string,  prioritas?: Priority): Task {
+        const currentTimestamp = new Date().toISOString();
+
+        if (!isJudulValid(judul)) {
+            throw new Error("Gagal: judul tidak boleh kosong!");
         }
 
-        if (fase < 1 || fase > 3) {
-            throw new Error("Gagal: Fase harus angka 1, 2, atau 3!");
-        }
-        const pesertaDiSekolah = this.pesertaRepo.findBySekolah(sekolah);
-
-        const isDuplikat = pesertaDiSekolah.find(
-            (p) => p.nama.toLowerCase() === nama.toLowerCase()
-        );
-
-        if (isDuplikat) {
-            throw new Error(`Gagal: Peserta bernama ${nama} dari sekolah ${sekolah} sudah terdaftar!`);
+        if (prioritas === undefined) {
+            throw new Error("Gagal: prioritas tidak boleh kosong!");
         }
 
-        const pesertaBaru = this.pesertaRepo.create({
-            nama: nama,
-            kelas: kelas,
-            sekolah: sekolah,
-            fase: fase,
-            email: email,
+        if (!isPriorityValid(prioritas)) {
+            throw new Error("Gagal: prioritas harus terdiri dari low, medium, high atau urgent!");
+        }
+        const taskBaru = this.taskRepo.create({
+            judul: judul,
+            prioritas: prioritas,
+            createdAt: currentTimestamp,
+            updatedAt: currentTimestamp,
+            status: "in_progress"
         });
 
-        return pesertaBaru;
+        return taskBaru;
+
+    }
+
+    getSemuaTask(): Task[] {
+        return this.taskRepo.findAll();
+    }
+
+    getTaskByStatus(status: TaskStatus): Task[] {
+        return this.taskRepo.findByStatus(status);
+    }
+
+    ubahStatus(id: number, status: TaskStatus): Task | undefined {
+        return this.taskRepo.update(id, {status: status});
+    }
+
+    hapusTask(id: number): boolean {
+        return this.taskRepo.delete(id);
+    }
+
+    cariTask(keyword: string): Task[] {
+        return this.taskRepo.search(keyword);
+    }
+
+    getStats(): TaskStats {
+        const semua = this.taskRepo.findAll();
+        const done = semua.filter(t => t.status === "done").length;
+
+        return {
+            total: semua.length,
+            todo: semua.filter(t => t.status === "todo").length,
+            inProgress: semua.filter(t => t.status === "in_progress").length,
+            done,
+            persentaseSelesai: semua.length === 0 ? 0 : Math.round((done / semua.length) * 100)
+        };
     }
 }
