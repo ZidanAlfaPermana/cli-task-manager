@@ -1,4 +1,4 @@
-import {Peserta} from "types";
+import {Peserta} from "@apptypes/";
 import {Repository} from "@repositories/Repository";
 
 export class PesertaRepository extends Repository<Peserta> {

@@ -9,3 +9,8 @@ export function isNilaiValid(nilai: number) {
 export function isNamaValid(nama: string) {
     return /^[a-zA-Z\s'-]{2,50}$/.test(nama);
 }
+
+// - isJudulValid(judul: string): boolean       → minimal 3 karakter
+// - isIdValid(id: unknown): id is number       → type guard!
+// - isPriorityValid(p: string): p is Priority
+// - isStatusValid(s: string): s is TaskStatus

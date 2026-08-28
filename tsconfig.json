@@ -17,7 +17,8 @@
       "@services/*": ["./src/services/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@utils/*": ["./src/utils/*"],
-      "@cli/*": ["./src/cli/*"]
+      "@cli/*": ["./src/cli/*"],
+      "@apptypes/*": ["./src/types"]
     }
   },
   "include": ["src/**/*"],
