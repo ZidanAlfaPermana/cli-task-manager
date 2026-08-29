@@ -1,6 +1,6 @@
 [
   {
-    "judul": "Task pertama edited",
+    "judul": "Task pertama",
     "prioritas": "medium",
     "createdAt": "2026-08-28T12:27:26.947Z",
     "updatedAt": "2026-08-28T12:27:26.947Z",
