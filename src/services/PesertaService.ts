@@ -1,5 +1,5 @@
-import { PesertaRepository } from "repositories";
-import {Peserta} from "types";
+import { PesertaRepository } from "@repositories";
+import {Peserta} from "@apptypes";
 
 export class PesertaService {
     private pesertaRepo: PesertaRepository;

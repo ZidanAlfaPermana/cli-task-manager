@@ -1,4 +1,4 @@
-import type { Task, TaskStatus, Priority } from "./../types";
+import type { Task, TaskStatus, Priority } from "@apptypes";
 
 export default class TaskModel implements Task {
     readonly id: number;

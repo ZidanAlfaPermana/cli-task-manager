@@ -39,8 +39,8 @@ export function tampilkanDaftarTask(tasks: Task[]): void {
         return;
     }
     tampilanNamaApp();
-    console.log("ID  STATUS        PRIORITAS  JUDUL");
-    console.log("─────────────────────────────────────────────────────────");
+    console.log("ID  STATUS        PRIORITAS  DEADLINE     JUDUL");
+    console.log("───────────────────────────────────────────────────────────────────────");
 
     tasks.forEach((t) => {
         let statusLabel = "";
@@ -58,7 +58,8 @@ export function tampilkanDaftarTask(tasks: Task[]): void {
                 statusLabel = `[?] ${t.status}`;
         }
 
-        const baris = `${String(t.id).padEnd(4)}${statusLabel.padEnd(14)}${t.prioritas.padEnd(11)}${t.judul}`;
+        const deadlineLabel = t.deadline ? t.deadline : "-";
+        const baris = `${String(t.id).padEnd(4)}${statusLabel.padEnd(14)}${t.prioritas.padEnd(11)}${deadlineLabel.padEnd(13)}${t.judul}`;
         console.log(baris);
     });
 
@@ -83,16 +84,20 @@ export function tampilkanStats(stats: TaskStats): void {
 export function tampilkanHelp(): void {
     tampilanNamaApp();
     console.log("  PANDUAN PENGGUNAAN CLI TASK MANAGER");
-    console.log("───────────────────────────────────────");
+    console.log("──────────────────────────────────────────────────────────────");
     console.log("Perintah yang tersedia:");
-    console.log("  add <judul>              : Menambahkan task baru");
-    console.log("  list [--status <status>] : Menampilkan daftar task (bisa di-filter status)");
+    console.log("  add <judul> [--priority <level>] [--deadline <DD-MM-YYYY>]");
+    console.log("                           : Menambahkan task baru");
+    console.log("  list [--status <status>] [--priority <level>] [--sort deadline]");
+    console.log("                           : Menampilkan daftar task (bisa di-filter & sort)");
     console.log("  edit <id> <judul>        : Mengubah judul task berdasarkan ID");
+    console.log("  deadline <id> <tanggal>  : Mengubah deadline task (format: DD-MM-YYYY)");
+    console.log("  priority <id> <level>    : Mengubah prioritas task (low/medium/high/urgent)");
     console.log("  done <id>                : Mengubah status task menjadi selesai (done)");
-    console.log("  progress <id>            : Mengubah status task menjadi dalam pengerjaan (progress)");
+    console.log("  progress <id>            : Mengubah status task menjadi dalam pengerjaan");
     console.log("  delete <id>              : Menghapus task berdasarkan ID");
     console.log("  search <keyword>         : Mencari task berdasarkan kata kunci");
-    console.log("  export <nama_file>       : Mengekspor data task ke dalam file");
+    console.log("  export <nama_file>       : Mengekspor data task ke dalam file teks");
     console.log("  stats                    : Menampilkan statistik task");
     console.log("  help, --help, -h         : Menampilkan menu bantuan ini");
     tampilanCredit();

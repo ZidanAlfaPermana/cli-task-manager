@@ -29,15 +29,24 @@ npm run build
 ## Cara Menggunakan
 
 ```bash
-node dist/index.js add "Belajar TypeScript"    # tambah task
-node dist/index.js list                         # lihat semua
-node dist/index.js list --status todo           # filter status
-node dist/index.js done 1                       # tandai selesai
-node dist/index.js progress 2                   # tandai dikerjakan
-node dist/index.js delete 3                     # hapus task
-node dist/index.js search "typescript"          # cari task
-node dist/index.js stats                        # statistik
-node dist/index.js help                         # bantuan
+node dist/index.js add "Belajar TypeScript"                                    # tambah task baru
+node dist/index.js add "Mengerjakan PR" --priority urgent                      # tambah task dengan prioritas
+node dist/index.js add "Meeting Klien" --priority high --deadline 29-10-2026   # tambah task dengan prioritas dan deadline
+node dist/index.js list                                                        # lihat semua task
+node dist/index.js list --status todo                                          # filter task berdasarkan status
+node dist/index.js list --priority urgent                                      # filter task berdasarkan prioritas
+node dist/index.js list --sort deadline                                        # urutkan task berdasarkan deadline terdekat
+node dist/index.js list --status in_progress --priority high --sort deadline   # filter ganda dan urutkan
+node dist/index.js progress 2                                                  # tandai task dikerjakan
+node dist/index.js done 1                                                      # tandai task selesai
+node dist/index.js edit 1 "Belajar Laravel 11"                                 # ubah judul task
+node dist/index.js priority 1 high                                             # ubah prioritas task
+node dist/index.js deadline 1 30-10-2026                                       # ubah deadline task
+node dist/index.js search "typescript"                                         # cari task berdasarkan judul
+node dist/index.js delete 3                                                    # hapus task
+node dist/index.js stats                                                       # lihat statistik produktivitas
+node dist/index.js export "laporan"                                            # export laporan ke file .txt
+node dist/index.js help, --help, -h                                                        # tampilkan menu bantuan
 ```
 
 ## Struktur Project
