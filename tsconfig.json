@@ -15,12 +15,13 @@
     ],
     "paths": {
       "*": ["./src/*"],
-      "@apptypes/index": ["./src/types/index.ts"],
-      "@apputils/index": ["./src/utils/index.ts"],
-      "@appservices/index": ["./src/services/index.ts"],
-      "@apprepositories/index": ["./src/repositories/index.ts"],
-      "@appmodels/index": ["./src/models/index.ts"],
-      "@appcli/index": ["./src/cli/index.ts"],
+      "@apptypes":   ["./src/types/index"],
+      "@models":     ["./src/models/index"],
+      "@services":   ["./src/services/index"],
+      "@repositories": ["./src/repositories/index"],
+      "@utils":      ["./src/utils/index"],
+      "@cli":        ["./src/cli/index"],
+      "@appconfig": ["./src/config/app.config.ts"]
     }
   },
   "include": ["src/**/*"],

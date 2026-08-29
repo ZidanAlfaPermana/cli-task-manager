@@ -1,6 +1,14 @@
-import {parseArgs} from "./cli";
+import { parseArgs, jalankanCommand } from "@cli";
+import { TaskService } from "@services";
+import { StorageService } from "@services";
 
+// Muat data saat start
+const dataTersimpan = StorageService.muat();
+const service = new TaskService(dataTersimpan);
 
-const args = process.argv.slice(2);
-const command = parseArgs(args);
-console.log("Command terparsing:", command); // sementara, untuk test
+// Jalankan command
+const command = parseArgs(process.argv.slice(2));
+jalankanCommand(command, service);
+
+// Simpan data setelah command selesai
+StorageService.simpan(service.getSemuaTask());
