@@ -4,10 +4,12 @@ Aplikasi pengelola tugas berbasis command line yang dibangun dengan TypeScript.
 
 ## Fitur
 
-- Tambah, lihat, ubah status, dan hapus task
-- Filter task berdasarkan status
+- Tambah, lihat, edit, ubah status, dan hapus task
+- Atur prioritas dan deadline pada task
+- Filter task berdasarkan status dan prioritas, serta urutkan berdasarkan deadline
 - Pencarian task berdasarkan kata kunci
 - Statistik penyelesaian task
+- Ekspor daftar task ke dalam file teks (.txt)
 - Data tersimpan otomatis dalam file JSON
 
 ## Teknologi
@@ -19,7 +21,7 @@ Aplikasi pengelola tugas berbasis command line yang dibangun dengan TypeScript.
 ## Instalasi
 
 ```bash
-git clone https://github.com/[username]/cli-task-manager.git
+git clone https://github.com/ZidanAlfaPermana/cli-task-manager.git
 cd cli-task-manager
 npm install
 npm run build
@@ -51,7 +53,7 @@ node dist/index.js help, --help, -h                                             
 
 ## Struktur Project
 
-\`\`\`
+```log
 src/
 ├── types/          Definisi tipe data
 ├── models/         Class entity
@@ -59,11 +61,31 @@ src/
 ├── services/       Business logic & storage
 ├── cli/            Interface terminal
 └── utils/          Helper function
-\`\`\`
+```
 
 ## Screenshot
 
-[Sertakan screenshot output terminal di sini]
+### Export Data menjadi `.txt`
+
+<img src="images/export.png">
+
+<img src="images/export-result.png">
+
+### List Task
+
+<img src="images/list.png">
+
+<img src="images/list-deadline.png">
+
+### Penambahan Task
+
+<img src="images/task_added.png">
+
+<img src="images/list.png">
+
+### Json Data atau Database local
+
+<img src="images/json-data.png">
 
 ## Konsep TypeScript yang Digunakan
 

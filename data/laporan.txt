@@ -5,8 +5,7 @@
     "createdAt": "2026-08-29T07:02:05.680Z",
     "updatedAt": "2026-08-29T07:02:05.680Z",
     "status": "todo",
-    "id": 1,
-    "deadline": "10-08-2027"
+    "id": 1
   },
   {
     "judul": "Task Test",
@@ -19,10 +18,10 @@
   },
   {
     "judul": "Belajar TypeScript",
-    "prioritas": "urgent",
+    "prioritas": "medium",
     "createdAt": "2026-08-29T07:21:08.893Z",
     "updatedAt": "2026-08-29T07:21:08.893Z",
-    "status": "in_progress",
+    "status": "todo",
     "id": 3
   },
   {
@@ -30,7 +29,16 @@
     "prioritas": "urgent",
     "createdAt": "2026-08-29T07:21:49.710Z",
     "updatedAt": "2026-08-29T07:21:49.710Z",
-    "status": "done",
+    "status": "todo",
     "id": 4
+  },
+  {
+    "judul": "Meeting Klien",
+    "prioritas": "high",
+    "createdAt": "2026-08-29T07:22:49.958Z",
+    "updatedAt": "2026-08-29T07:22:49.958Z",
+    "status": "todo",
+    "deadline": "29-10-2026",
+    "id": 5
   }
 ]
